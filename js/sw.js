@@ -1,3 +1,17 @@
+if('serviceWorker' in navigator){
+
+    navigator.serviceWorker.register('js/sw.js').then(function(registration){
+        console.log('Succeeded', registration);
+
+    }).catch(function(error){
+        console.log('Failed', error);
+
+    });
+
+} else {
+    console.log("serviceWorkers are not supported by this Browser");
+}
+
  self.addEventListener('install', function(event){
 
     event.waitUntil(
@@ -32,10 +46,6 @@
     
 });
 
-self.addEventListener('fetch', function(event){
-        console.log(event.request);
-    
-});
 
 
  
