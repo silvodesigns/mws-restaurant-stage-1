@@ -1,23 +1,23 @@
-
-var CACHE_NAME = 'restaurantCacheV1';
+//REQUIRED FILES
+var CACHE_NAME = 'restaurantCacheV2';
 var REQUIRED_FILES =[
-            'http://localhost:8000/',
-            'http://localhost:8000/css/styles.css',
-            'http://localhost:8000/index.html',
-            'http://localhost:8000/restaurant.html',
-            'http://localhost:8000/img/1.jpg',
-            'http://localhost:8000/img/2.jpg',
-            'http://localhost:8000/img/3.jpg',
-            'http://localhost:8000/img/4.jpg',
-            'http://localhost:8000/img/5.jpg',
-            'http://localhost:8000/img/6.jpg',
-            'http://localhost:8000/img/7.jpg',
-            'http://localhost:8000/img/8.jpg',
-            'http://localhost:8000/img/9.jpg',
-            'http://localhost:8000/img/10.jpg',
-            'http://localhost:8000/js/main.js',
-            'http://localhost:8000/js/dbhelper.js',
-            'http://localhost:8000/data/restaurants.json'
+            '/',
+            'css/styles.css',
+            'index.html',
+            'restaurant.html',
+            'img/1.jpg',
+            'img/2.jpg',
+            'img/3.jpg',
+            'img/4.jpg',
+            'img/5.jpg',
+            'img/6.jpg',
+            'img/7.jpg',
+            'img/8.jpg',
+            'img/9.jpg',
+            'img/10.jpg',
+            'js/main.js',
+            'js/dbhelper.js',
+            'data/restaurants.json'
 
 ];
 
@@ -66,7 +66,7 @@ self.addEventListener('fetch', function(event) {
 
 if('serviceWorker' in navigator){
 
-    navigator.serviceWorker.register('js/sw.js').then(function(registration){
+    navigator.serviceWorker.register('sw.js').then(function(registration){
         console.log('Succeeded', registration);
 
     }).catch(function(error){
