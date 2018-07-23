@@ -17,6 +17,7 @@ var REQUIRED_FILES =[
             'img/10.jpg',
             'js/main.js',
             'js/dbhelper.js',
+            'sw.js',
             'data/restaurants.json'
 
 ];
