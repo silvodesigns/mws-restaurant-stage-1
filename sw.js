@@ -18,9 +18,11 @@ var REQUIRED_FILES =[
             'js/main.js',
             'js/dbhelper.js',
             'sw.js',
+            'manifest.js',
             'data/restaurants.json'
 
 ];
+
 
 
 //Install Service worker
