@@ -13,9 +13,9 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "mws-restaurant-stage-1/index.html",
+  "start_url": "/",
   "background_color": "#f18200",
   "display": "standalone",
-  "scope": "/mws-restaurant-stage-1/",
+  "scope": "/",
   "theme_color": "#3367D6"
 }

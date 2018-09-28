@@ -1,5 +1,5 @@
 //REQUIRED FILES
-var CACHE_NAME = 'restaurantCacheV12';
+var CACHE_NAME = 'restaurantCacheV16';
 var REQUIRED_FILES =[
             '/',
             'js/dbhelper.js',
@@ -18,7 +18,7 @@ var REQUIRED_FILES =[
             'img/10.jpg',
             'js/main.js',
             'sw.js',
-            'manifest.js',
+            'manifest.json',
             'registersw.js'
 
 ];
@@ -40,7 +40,7 @@ self.addEventListener('install', function(event) {
 self.addEventListener('activate',function(event){
   event.waitUntil(
     //Remove old cache
-    caches.delete('restaurantCacheV11')
+    caches.delete('restaurantCacheV15')
     );
 });
 
