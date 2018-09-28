@@ -1,7 +1,8 @@
 //REQUIRED FILES
-var CACHE_NAME = 'restaurantCacheV2';
+var CACHE_NAME = 'restaurantCacheV12';
 var REQUIRED_FILES =[
             '/',
+            'js/dbhelper.js',
             'css/styles.css',
             'index.html',
             'restaurant.html',
@@ -16,13 +17,11 @@ var REQUIRED_FILES =[
             'img/9.jpg',
             'img/10.jpg',
             'js/main.js',
-            'js/dbhelper.js',
             'sw.js',
-            'manifest.js'
+            'manifest.js',
+            'registersw.js'
 
 ];
-
-
 
 
 
@@ -35,44 +34,31 @@ self.addEventListener('install', function(event) {
         // Add all offline dependencies to the cache
         return cache.addAll(REQUIRED_FILES);
       })
-      .then(function() {
-        // At this point everything has been cached become active service worker
-        return self.skipWaiting();
-      })
   );
 });
 
-
+self.addEventListener('activate',function(event){
+  event.waitUntil(
+    //Remove old cache
+    caches.delete('restaurantCacheV11')
+    );
+});
 
 //Return cache requests
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request).then(function(response) {
         // Cache hit - return the response from the cached version
-        if(response) return response;
+        if(response) {
+          return response;
+        } else {
         // Not in cache - return the result from the live server
         // `fetch` is essentially a "fallback"
         return fetch(event.request);
+      }
       })
   );
 });
-
-
-
-//Register Service Worker
-if('serviceWorker' in navigator){
-
-    navigator.serviceWorker.register('sw.js').then(function(registration){
-        console.log('Succeeded', registration);
-
-    }).catch(function(error){
-        console.log('Failed', error);
-
-    });
-
-} else {
-    console.log("serviceWorkers are not supported by this Browser");
-}
 
 
 

@@ -1,3 +1,13 @@
+
+//Open database
+ var dbPromise = idb.open('database', 1, function(upgradeDb){
+     var keyValStore = upgradeDb.createObjectStore('restaurants', {
+          keyPath: 'id'
+       });
+  });
+
+
+
 /*
  * Common database helper functions.
  */
@@ -16,18 +26,14 @@ class DBHelper {
    * Fetch all restaurants.
    */
   static fetchRestaurants(callback) {
+      //create and open the database
+     
 
     fetch(`http://localhost:1337/restaurants`).then(function(response){
             return response.json();
     }).then(function(data){
 
-      //create and open the database
-      var dbPromise = idb.open('database', 1, function(upgradeDb){
-      var keyValStore = upgradeDb.createObjectStore('restaurants', {
 
-          keyPath: 'id'
-      });
-      });
       //create a transaction and store JSON in database
       dbPromise.then(function(db){
       var tx = db.transaction('restaurants','readwrite');
@@ -45,7 +51,19 @@ class DBHelper {
       callback(null, data);
    
 
+    }).catch(function(data){
+
+        dbPromise.then(function(db){
+          var posts = db.transaction('restaurants','readwrite').objectStore('restaurants');
+         return posts.getAll().then(function(response){
+
+
+          callback(null, response);
+         });
+
     });
+          });
+
 
 
   }
